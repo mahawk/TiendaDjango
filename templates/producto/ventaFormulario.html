@@ -1,0 +1,34 @@
+{% extends 'base/plantilla.html' %}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Formulario venta</title>
+	<meta charset="utf-8">
+	{% load staticfiles %}
+	{% block extracss %}
+	
+	{% endblock %}
+</head>
+<body>
+	{% block content %}
+
+	<div class="container mt-2">
+	    <div class="row justify-content-md-center">
+	        <div class="col-8">
+	        	
+	            <h1>Venta de Producto</h1>
+
+	            <form method="POST">
+	                {% csrf_token %}
+	                {{ form.as_p }}
+	                <button type="submit" class="btn btn-success">Comprar</button>
+	            </form> 
+
+	        </div>
+	    </div>
+	</div>
+
+	{% endblock %}
+</body>
+</html>

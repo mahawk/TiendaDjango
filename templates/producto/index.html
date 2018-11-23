@@ -1,0 +1,40 @@
+{% extends 'base/plantilla.html' %}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Producto</title>
+	<meta charset="utf-8">
+	{% load staticfiles %}
+	{% block extracss %}
+	
+	{% endblock %}
+</head>
+<body>
+	{% block content %}
+
+		<h1 class="jumbotron-heading mt-2 ml-3 mb-0">Productos</h1>
+
+		<div class="container ml-2">
+			<div class="album py-5 bg-ligth">
+				<div class="row">
+					{% for producto in Producto %}
+					<div class="col-md-4">	
+						<div class="card mb-4 shadow-sm">
+							<div class="card-body">
+								<p class="card-text">Nombre: {{producto.nombreProducto}}</p>
+								<p class="card-text">Precio: ${{producto.costo}}</p>
+								<p class="card-text">Descripcion: {{producto.descripcion}}</p>
+							</div>
+						</div>
+					</div>
+					{% empty %}
+						<p>No hay productos<</p>
+					{% endfor %}
+				</div>
+			</div>
+		</div>
+		
+	{% endblock %}
+</body>
+</html>

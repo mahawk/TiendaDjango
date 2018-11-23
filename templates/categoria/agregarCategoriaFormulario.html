@@ -1,0 +1,31 @@
+{% extends 'base/plantilla.html' %}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Agregar Categoria</title>
+	<meta charset="utf-8">
+	{% load staticfiles %}
+	{% block extracss %}
+	
+	{% endblock %}
+</head>
+<body>
+	{% block content %}
+
+	<div class="container mt-3">
+		<div class="row justify-content-md-center">
+			<div class="col-8">
+				<h1>Formulario categoria</h1>
+				<form method="POST">
+					{% csrf_token %}
+					{{ form.as_p }}
+					<button type="submit" class="btn btn-success">Aceptar</button>
+				</form>	
+			</div>
+		</div>
+	</div>
+
+	{% endblock %}
+</body>
+</html>

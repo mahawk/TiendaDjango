@@ -1,0 +1,55 @@
+{% extends 'base/plantilla.html' %}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Producto</title>
+	<meta charset="utf-8">
+	{% load staticfiles %}
+	{% block extracss %}
+	
+	{% endblock %}
+</head>
+<body>
+	{% block content %}
+
+	<div class="container-fluid mt-3">
+		<table class="table table-borderless">
+			<thead class="thead-dark">
+				<tr>
+					<th scope="col">Id</th>
+					<th scope="col">Producto</th>
+					<th scope="col">Costo</th>
+					<th scope="col">Descripcón</th>
+					<th scope="col">Existencias</th>
+					<th scope="col">Acciones</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for producto in object_list %}
+				<tr>
+					<th scope="row">{{producto.id}}</td>
+					<td>{{producto.nombreProducto}}</td>
+					<td>${{producto.costo}}</td>
+					<td>{{producto.descripcion}}</td>
+					<td>{{producto.numExistencias}}</td>
+					<td>
+					<a href="{% url 'editarProducto' producto.id %}" class="btn btn-primary">Editar</a>
+					<a href="{% url 'eliminarProducto' producto.id %}" class="btn btn-danger">Borrar</a>
+					<a href="{% url 'comprarProducto' producto.id %}"  class="btn btn-success">Agregar al Carrito</a>
+					</td>
+				{% empty %}
+					<td span="6">No hay productos</td>
+				</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+
+	<div class="container-fluid mt-3">
+		<a href="{% url 'nuevoRegistro' %}">Agregar Producto</a>
+	</div>
+
+	{% endblock %}
+</body>
+</html>

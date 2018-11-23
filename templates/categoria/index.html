@@ -1,0 +1,30 @@
+{% extends 'base/plantilla.html' %}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Categoria</title>
+	<meta charset="utf-8">
+	{% load staticfiles %}
+	{% block extracss %}
+		<link rel="stylesheet" type="text/css" href="{% static 'css/estilosCategoriaIndex.css' %}">
+	{% endblock %}
+</head>
+<body>
+
+	{% block content %}
+
+		<br>
+		<h2>Categorias</h2>
+
+		<ol class="breadcrumb">
+			{% for categoria in Categoria %}
+				<li class="breadcrumb-item active">{{categoria.nombreCategoria}}</li>
+			{% empty %}
+				<li class="breadcrumb-item active">No hay categorias</li>
+			{% endfor %}
+		</ol>
+
+	{% endblock %}
+</body>
+</html>

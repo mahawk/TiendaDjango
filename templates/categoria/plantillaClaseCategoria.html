@@ -1,0 +1,50 @@
+{% extends 'base/plantilla.html' %}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Categoria</title>
+	<meta charset="utf-8">
+	{% load staticfiles %}
+	{% block extracss %}
+	
+	{% endblock %}
+</head>
+<body>
+	{% block content %}
+
+	<div class="container-fluid mt-3">
+		<table class="table table-borderless">
+			<thead class="thead-dark">
+				<tr>
+					<th scope="col">Id</th>
+					<th scope="col">Categoria</th>
+					<th scope="col">Fecha de creacion</th>
+					<th scope="col">Acciones</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for categoria in object_list %}
+				<tr>
+					<th scope="row">{{categoria.id}}</td>
+					<td>{{categoria.nombreCategoria}}</td>
+					<td>{{categoria.fechaCreacion}}</td>
+					<td>
+					<a href="{% url 'Categoria:editarCategoria' categoria.id %}" class="btn btn-primary">Editar</a>
+					<a href="{% url 'Categoria:eliminarCategoria' categoria.id %}" class="btn btn-danger">Borrar</a>
+					</td>
+				{% empty %}
+					<td span="6">No hay categorias</td>
+				</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+
+	<div class="container-fluid mt-3">
+		<a href="{% url 'Categoria:nuevoRegistro' %}">Agregar categoria</a>
+	</div>
+
+	{% endblock %}
+</body>
+</html>
